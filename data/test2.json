@@ -1,0 +1,33 @@
+{
+	"id": 0, "type": "branch",
+	"e": [
+		{ "id": 1, "type": "node" },
+		{ "id": 2, "type": "node" },
+		{
+			"id": 3, "type": "branch",
+			"e": [
+				{ "id": 4, "type": "node" },
+				{
+					"id": 5, "type": "branch",
+					"e": [
+						{ "id": 6, "type": "node" }
+					]
+				},
+				{
+					"id": 7, "type": "branch",
+					"e": [
+						{ "id": 8, "type": "node" }
+					]
+				}
+			]
+		},
+		{
+			"id": 9, "type": "branch",
+			"e": [
+				{ "id": 10, "type": "node" },
+				{ "id": 11, "type": "node" }
+			]
+		},
+		{ "id": 12, "type": "node" }
+	]
+}

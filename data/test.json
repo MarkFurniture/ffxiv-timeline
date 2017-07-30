@@ -1,0 +1,54 @@
+{
+	"id": 0, "type": "branch",
+	"e": [
+		{ "id": 1, "type": "node" },
+		{ "id": 2, "type": "node" },
+		{
+			"id": 3, "type": "branch",
+			"e": [
+				{ "id": 4, "type": "node" },
+				{ "id": 5, "type": "node" },
+				{ "id": 6, "type": "node" }
+			]
+		},
+		{
+			"id": 7, "type": "branch",
+			"e": [
+				{ "id": 8, "type": "node" },
+				{
+					"id": 9, "type": "branch",
+					"e": [
+						{ "id": 10, "type": "node" },
+						{ "id": 11, "type": "node" }
+					]
+				},
+				{
+					"id": 12, "type": "branch",
+					"e": [
+						{ "id": 13, "type": "node" },
+						{ "id": 14, "type": "node" }
+					]
+				},
+				{ "id": 15, "type": "node" }
+			]
+		},
+		{ "id": 16, "type": "node" },
+		{
+			"id": 17, "type": "branch",
+			"e": [
+				{ "id": 18, "type": "node" },
+				{ "id": 19, "type": "node" },
+				{ "id": 20, "type": "node" }
+			]
+		},
+		{
+			"id": 21, "type": "branch",
+			"e": [
+				{ "id": 22, "type": "node" },
+				{ "id": 23, "type": "node" },
+				{ "id": 24, "type": "node" }
+			]
+		},
+		{ "id": 25, "type": "node" }
+	]
+}
