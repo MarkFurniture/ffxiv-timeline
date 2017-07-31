@@ -117,24 +117,31 @@
 
 		// breadth first search
 		calculateNodeLevels(root = this.list.nodes[0]) {
-			// let root = this.list.nodes[0];
-
+			let maxHeight = 0;
+			let maxWidth = 0;
 			let counter = 0;
+			let offset;
 			let queue = [root];
+			let stack = [];
 
 			while (queue.length) {
 				let node = queue.splice(0,1)[0];
 
-				console.log(`node ${node.id} has ${node.next.length} children at depth ${node.depth}`);
-				// console.log(Math.pow(0.5, node.depth));
+				// resolve height of nodes with multiple parents
+				if (node.previous.length > 1) {
+					let i;
+					let examine;
+					for (i = 0; i < this.list.allNodes.length && this.list.allNodes[i] != node; i++)
+						if (this.list.allNodes[i].depth == node.depth)
+							examine = this.list.allNodes[i];
 
-				let offset;
+					node.height = examine.height;
+				}
+
 
 				if (node.next.length > 1) {
-					console.log(`the span of the branches will be ${Math.pow(0.5, node.depth)}`)
-					offset = Math.pow(0.5, node.depth-1)/node.next.length;
+					offset = Math.pow(0.5, node.depth-1)/ node.next.length;
 				} else {
-					console.log(`no branch will happen`)
 					offset = 0;
 				}
 
@@ -143,25 +150,26 @@
 					if (child.visited === undefined) {
 
 						// if node has multiple children then calculate offset
-						if (node.next.length > 1) {
-							console.log(`calculating height of child node ${child.id}: ${node.height}`)
-						} else {
+						if (node.next.length > 1)
+							child.height = (node.height + child.level * offset) - offset / node.next.length;
+						else
 							child.height = node.height;
-							console.log(`setting height of child node ${child.id} to parent height: ${node.height}`)
-						}
 
-						// console.log(offset)
+						maxHeight = Math.max(maxHeight, child.height);
 
-						// child.height = node.height + (node.next.length * offset - parseInt(c) * offset);
 						child.visited = true;
-						queue.push(child)
+						queue.push(child);
 					}
 				}
+
+				maxHeight = Math.max(maxHeight, node.height);
+				maxWidth = Math.max(maxWidth, node.index);
 
 				counter++;
 			}
 
-			console.log(counter);
+			this.list.maxHeight = maxHeight;
+			this.list.maxWidth = maxWidth;
 		}
 
 		toString() {

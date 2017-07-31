@@ -5,7 +5,15 @@
 
 'use strict'
 
+
 ;(() => {
+	const renderOptions = {
+		xScale: 80,
+		xTranslate: 10,
+		yScale: 80,
+		yTranslate: 100
+	};
+
 	class Renderer {
 		constructor() {
 			console.log('new renderer');
@@ -16,21 +24,22 @@
 			let p = d3.select('body')
 				.append('svg')
 				.data([list])
-				.style('width', d => { console.log(d); return 100 * d.length; });
+				.style('width', d => { return d.maxWidth * renderOptions.xScale + 2 * renderOptions.xTranslate; })
+				.style('height', d => { return d.maxHeight + renderOptions.yScale + 2 * renderOptions.yTranslate; });
+
+			// TODO
+			// - centre line
+			// - scale on centre line
+			// - event lines
+			// - event popup
 
 			p.selectAll("circle")
 				.data(list.allNodes)
 				.enter().append("circle")
 				.classed('dot', true)
-				.attr('cx', d => { return d.index * 50 + 10; })
-				.attr('cy', d => {
-					// console.log(list.maxDepth);
-					return (d.level * 10 + 10) * Math.pow(-1, d.level);
-				})
-				.text(function(d) {
-					// console.log(d);
-					return d.id;
-				});
+				.attr('cx', d => { return d.index * renderOptions.xScale + renderOptions.xTranslate; })
+				.attr('cy', d => { return d.height * renderOptions.yScale + renderOptions.yTranslate; });
+
 		}
 	}
 
