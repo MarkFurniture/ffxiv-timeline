@@ -10,9 +10,9 @@
 		constructor(uri) {
 			console.log('new event list');
 			this.uri = uri;
-			this.config = {
-				vscale: 100 // pixel height for one branch
-			};
+			// this.config = {
+			// 	vscale: 100
+			// };
 		}
 
 		async getEventList() {
@@ -21,7 +21,6 @@
 
 			await Util.ajax(this.uri).then((data) => {
 					events = JSON.parse(data);
-					// may need to recalculate height on each node
 				}).catch((e) => {
 					console.log(e);
 				});

@@ -15,9 +15,9 @@
 		constructor() {
 			console.log('Initialising app');
 
-			this.renderer = new Renderer();
 			this.util = new Util();
 			this.nodeList = new NodeList('http://local.src.com/xiv/timeline/data/test.json');
+			this.renderer = new Renderer();
 
 			this.get();
 		}
@@ -29,6 +29,7 @@
 			console.log(this.nodeList.toString());
 
 			// render the data
+			this.renderer.init(this.nodeList.list);
 			this.renderer.render(this.nodeList.list);
 		}
 	}
